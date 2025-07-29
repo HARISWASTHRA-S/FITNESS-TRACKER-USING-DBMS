@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <link href="/static/styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fitness Tracker</h1>
+            <button id="logoutBtn" class="btn btn-danger">Logout</button>
+        </header>
+        <div class="grid">
+            <!-- Activity Form -->
+            <div class="card">
+                <h2>Log Activity</h2>
+                <div class="form-group">
+                    <label>Smartwatch Model</label>
+                    <select id="deviceModel" class="input">
+                        <option value="FitBit Pro">FitBit Pro</option>
+                        <option value="Apple Watch">Apple Watch</option>
+                        <option value="Garmin Venu">Garmin Venu</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button id="connectDeviceBtn" class="btn btn-info">Connect Device</button>
+                    <p id="connectionStatus" class="connection-status">No device connected</p>
+                </div>
+                <div class="form-group">
+                    <label>Activity Type</label>
+                    <select id="activityType" class="input">
+                        <option value="Running">Running</option>
+                        <option value="Cycling">Cycling</option>
+                        <option value="Walking">Walking</option>
+                        <option value="Swimming">Swimming</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Steps</label>
+                    <input id="steps" type="number" class="input" placeholder="Enter steps" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Calories Burned</label>
+                    <input id="calories" type="number" class="input" placeholder="Enter calories" min="0" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label>Duration (minutes)</label>
+                    <input id="duration" type="number" class="input" placeholder="Enter duration" min="0" step="0.1">
+                </div>
+                <button id="addActivityBtn" class="btn btn-primary">Add Activity</button>
+                <button id="syncDeviceBtn" class="btn btn-success">Sync Smart Device</button>
+            </div>
+            <!-- Goals Form -->
+            <div class="card">
+                <h2>Set Fitness Goal</h2>
+                <div class="form-group">
+                    <label>Goal Type</label>
+                    <select id="goalType" class="input">
+                        <option value="Steps">Steps</option>
+                        <option value="Calories">Calories</option>
+                        <option value="Duration">Duration (minutes)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Target</label>
+                    <input id="goalTarget" type="number" class="input" placeholder="Enter target" min="0" step="0.1">
+                </div>
+                <button id="setGoalBtn" class="btn btn-primary">Set Goal</button>
+            </div>
+            <!-- Report Section -->
+            <div class="card">
+                <h2>Fitness Report</h2>
+                <div id="report">
+                    <p><strong>Total Steps:</strong> <span id="totalSteps">0</span></p>
+                    <p><strong>Total Calories:</strong> <span id="totalCalories">0</span></p>
+                    <p><strong>Total Duration:</strong> <span id="totalDuration">0</span> minutes</p>
+                    <div id="goalsList"></div>
+                </div>
+                <canvas id="activityChart" class="chart"></canvas>
+            </div>
+        </div>
+        <!-- Activity History -->
+        <div class="card">
+            <h2>Activity History</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Activity Type</th>
+                            <th>Steps</th>
+                            <th>Calories</th>
+                            <th>Duration (min)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="/static/main.js"></script>
+</body>
+</html>
